@@ -3,11 +3,13 @@ import pool from "./server.js";
 import {input_ids} from "./input.js";
 
 import{
-    delay,t_names,exec,tournament_registration,player_registration,update_ratings,
+    delay,exec,tournament_registration,player_registration,update_ratings,
     end_round,end_tournament,sonneborn_berger,round_registration,
     player_object,byes,colour,rating,shuffle,matches,random
     } 
 from "./tournament.js";
+
+import {t_names} from "./seed.js";
 
 const rotate = (playerIds)=>{
     let n = playerIds.length;

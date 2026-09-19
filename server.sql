@@ -1,7 +1,6 @@
 -- Active: 1786379111953@@127.0.0.1@3306@chess
 CREATE DATABASE chess;
 USE chess;
-
 CREATE TABLE players(
     id INT AUTO_INCREMENT,     
     name VARCHAR(30) NOT NULL,     

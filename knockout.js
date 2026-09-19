@@ -1,7 +1,7 @@
 import pool from "./server.js";
 
 import
-    {delay,t_names,exec,tournament_registration,player_registration,
+    {delay,exec,tournament_registration,player_registration,
     round_registration,player_object,byes,colour,rating,
     matches,update_ratings,end_round,end_tournament
     } 
