@@ -266,14 +266,10 @@ export const scheveningen = async ()=>{
         await pairing(connection,t_a,t_b,t_id);
         await connection.commit();
     } catch(err) {
-        // console.error(errMsg);
         console.error(err);
         console.error("\nTransaction rolled back due to the above error. ");
         await connection.rollback();
     } finally {
         connection.release();
     }
-    // await pool.end();
 };
-
-// scheveningen();

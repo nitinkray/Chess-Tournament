@@ -139,7 +139,6 @@ export const RoundRobin = async ()=>{
     } finally {
         connection.release();
     }
-    // await pool.end();
 };
 
 export const DoubleRoundRobin = async ()=>{
@@ -163,8 +162,4 @@ export const DoubleRoundRobin = async ()=>{
     } finally {
         connection.release();
     }
-    // await pool.end();
 };
-
-// RoundRobin();
-// DoubleRoundRobin();

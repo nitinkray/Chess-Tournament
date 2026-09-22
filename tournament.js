@@ -34,7 +34,6 @@ export const exec = async (conn, sql, params, errMsg) => {
         return result;
     } catch (err) {
         console.error(errMsg);
-        // console.error(err);
         throw err;
     }
 };
