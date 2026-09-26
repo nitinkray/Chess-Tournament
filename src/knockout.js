@@ -115,19 +115,26 @@ export const knockout = async ()=>{
 
     try{
         await connection.beginTransaction();
+
         let t_id = await tournament_registration(connection,playerIds,t_names(),'Knockout');
+        
         const players = await player_object(connection,playerIds);
         sortids(players,playerIds);
+        
         const ranks = [];
+        
         console.log("\n\nTournament has begun!");
         await delay(1000);
         await recursion(connection,playerIds,t_id,players,ranks);
         await end_tournament(connection,t_id);
+        
         await update_ratings(connection,players);
         await standings(connection,players,t_id,ranks);
+        
         await connection.commit();
     } catch(err) {
-        console.error(err.message ,"\nTransaction rolled back due to the above error. ");
+        console.error(err);
+        console.log("\nTransaction rolled back due to the above error. ");
         await connection.rollback();
     } finally {
         connection.release();

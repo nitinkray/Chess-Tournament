@@ -1,6 +1,6 @@
 {
   "name": "Chess Tournament Simulator",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-24",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24-bookworm",
   "features": {
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
@@ -15,9 +15,7 @@
     "DB_NAME": "chess"
   },
   "forwardPorts": [3307],
-  "portsAttributes": {
-    "3307": { "label": "MySQL (chess database)" }
-  },
+  "portsAttributes": { "3307": { "label": "MySQL (chess database)", "onAutoForward": "silent" } },
   "hostRequirements": { "cpus": 2, "memory": "8gb" }
 }
 

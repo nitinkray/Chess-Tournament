@@ -225,4 +225,4 @@ Create Next Round -> ... -> Complete Tournament -> Store Final Standings and Res
 
 `check_player_round` — ensures that one player plays only once per round (defined in `schema.sql`).
 
-> `check_bye_round` — one bye per player per round. This trigger is **not** part of the current `schema.sql`: the `byes(round_id, player_id)` primary key already makes a duplicate bye in the same round impossible.
+`check_bye_round` — one bye per player per round. This trigger is **not** part of the current `schema.sql`: the `byes(round_id, player_id)` primary key already makes a duplicate bye in the same round impossible.

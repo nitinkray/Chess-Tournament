@@ -231,6 +231,7 @@ const pairing = async (connection,t_a,t_b,t_id)=>{
     
     for(let i=0;i<n;i++){
         const round_id = await round_registration(connection,t_id,i+1,'Main');
+        
         for(let j=0;j<n;j++){
             let left = t_a[j],right = t_b[j];
             const [white,black] = colour(players,left,right);

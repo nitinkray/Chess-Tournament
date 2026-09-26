@@ -125,12 +125,17 @@ export const RoundRobin = async ()=>{
 
     try{
         await connection.beginTransaction();
+
         let t_id = await tournament_registration(connection,playerIds,t_names(),'Round Robin');
+        
         if (playerIds.length%2!==0){
             playerIds.push('bye');
         }
+        
         await delay(1000);
+        
         await Robin(connection,playerIds,t_id,playerIds.length-1);
+        
         await connection.commit();
     } catch(err) {
         console.error(err);
@@ -148,13 +153,18 @@ export const DoubleRoundRobin = async ()=>{
 
     try{
         await connection.beginTransaction();
+        
         let t_id = await tournament_registration(connection,playerIds,t_names(),'Double Round Robin');
+        
         if (playerIds.length%2!==0){
             playerIds.push('bye');
         }
-        let l = playerIds.length;
+        
         await delay(1000);
+        
+        let l = playerIds.length;
         await Robin(connection,playerIds,t_id,2*(l-1));
+        
         await connection.commit();
     } catch(err) {
         console.error(err.message ,"\nTransaction rolled back due to the above error. ");

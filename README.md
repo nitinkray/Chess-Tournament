@@ -31,11 +31,6 @@ A **Node.js + MySQL** application that simulates complete chess tournaments acro
 - **dotenv** — environment configuration
 - **docker** — environment containerization
 
-## 📦 Prerequisites
-
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) — recommended; the whole stack runs from `compose.yaml` (see [DOCKER.md](./DOCKER.md))
-- **Or**, to run on the host: [Node.js 24+](https://nodejs.org/) and [MySQL 8+](https://www.mysql.com/)
-
 ## 🚀 Getting Started
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/nitinkray/Chess-Tournament)
@@ -45,6 +40,7 @@ Setup, running tournaments, querying the database, logs, and running without Doc
 ```bash
 docker compose up -d --build                 # MySQL 8.4 + app image
 docker compose exec app node src/main.js     # play a tournament
+docker compose exec -e MYSQL_PWD=chess db mysql -A -s -t -uroot chess # run mysql queries
 ```
 
 No local Node.js or MySQL install is needed — and with a Codespace you don't even need Docker Desktop: Node 24, Docker and MySQL all run in the cloud, so you can open the repo and start testing straight away. To point the app at your own MySQL instead, see §5 of **[DOCKER.md](./DOCKER.md)**.

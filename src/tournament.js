@@ -193,7 +193,6 @@ export const rating = (white,black,s,players) => {
 
     players[white].rating += change;
     players[black].rating -= change;
-    
 };
 
 export const matches = async (connection,round_id,white,black,players,random)=>{
