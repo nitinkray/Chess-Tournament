@@ -29,7 +29,8 @@ async function main(){
     }
 
     close_input();
-    pool.end();
 }
 
-main();
+main()
+.catch(e => { console.error(e); process.exitCode = 1; })
+.finally(() => pool.end());

@@ -1,0 +1,55 @@
+name: chess-tournament
+
+x-app-environment: &app-environment
+  DB_HOST: db
+  DB_PORT: "3306"
+  DB_USER: root
+  DB_PASSWORD: ${MYSQL_ROOT_PASSWORD:-chess}
+  DB_NAME: chess
+
+services:
+  db:
+    image: mysql:8.4            # LTS, not "latest" — no surprise upgrades
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-chess}
+      MYSQL_DATABASE: chess
+    ports:
+      - "3307:3306"             # 3307 on host avoids clashing with any local MySQL
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./sql/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p$$MYSQL_ROOT_PASSWORD --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 30s
+
+  app:
+    build: .
+    image: chess-tournament
+    command: sleep infinity
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment: *app-environment
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./src:/app/src
+
+  play:
+    # Started by `docker compose run --rm play` -> fully interactive (keyboard works)
+    image: chess-tournament
+    depends_on:
+      db:
+        condition: service_healthy
+    environment: *app-environment
+    stdin_open: true
+    tty: true
+
+volumes:
+  mysql_data:

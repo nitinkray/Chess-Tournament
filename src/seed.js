@@ -44,35 +44,39 @@ export const t_names = ()=>{
     return names[Math.floor(Math.random() * names.length)];
 };
 
-// -- INSERT INTO players (name, rating) VALUES
-// -- ('Divyansh Agrawal',1500)
-// -- ('Arjun Mehta', 2450),
-// -- ('Vikram Sharma', 2385),
-// -- ('Rahul Verma', 2310),
-// -- ('Aditya Rao', 2265),
-// -- ('Rohan Kapoor', 2190),
-// -- ('Karan Malhotra', 2145),
-// -- ('Aman Gupta', 2080),
-// -- ('Siddharth Jain', 2025),
-// -- ('Nikhil Agarwal', 1985),
-// -- ('Varun Iyer', 1940),
-// -- ('Yash Patel', 1895),
-// -- ('Ankit Mishra', 1840),
-// -- ('Pranav Joshi', 1795),
-// -- ('Harsh Vardhan', 1750),
-// -- ('Devansh Singh', 1710),
-// -- ('Ayush Tiwari', 1665),
-// -- ('Manav Bansal', 1620),
-// -- ('Shrey Saxena', 1585),
-// -- ('Dhruv Chawla', 1540),
-// -- ('Kunal Arora', 1495),
-// -- ('Aarav Nair', 1450),
-// -- ('Ishaan Kulkarni', 1410),
-// -- ('Kabir Deshmukh', 1365),
-// -- ('Ritvik Soni', 1320),
-// -- ('Ansh Srivastava', 1280),
-// -- ('Mohit Yadav', 1245),
-// -- ('Rishabh Pandey', 1190),
-// -- ('Tanmay Dubey', 1140),
-// -- ('Lakshya Bhatt', 1085),
-// -- ('Samar Khan', 1020);
+export const team_names = ()=>{
+    const names = [
+        "The Pawn Stars",
+        "Royal Forks",
+        "Perpetual Checkers",
+        "The Mating Net",
+        "Castled Kings",
+        "Bishop's Battalion",
+        "The Center Squares",
+        "Tempo Tyrants",
+        "The Passed Pawns",
+        "Checkmate Cartel",
+        "Lord of the Kings",
+        "Game of Pawns",
+        "Queenside Scrappers",
+        "Men in Black & White",
+        "The Magic Squares",
+        "Poisoned Pawns",
+        "The Back Rank Brawlers",
+        "Blunder Busters",
+        "Diagonal Demons",
+        "The Forking Knights",
+        "Sicilian Mob",
+        "The Pinning Punks",
+        "Skewer Squad",
+        "64 Square Syndicate",
+        "Woodpushers Anonymous",
+        "The Ruy Lopez Renegades",
+        "E4 Elite",
+        "Checkmate Chasers",
+        "The Smothered Mates",
+        "Time Trouble Terrors"
+    ];
+    return names[Math.floor(Math.random() * names.length)];
+};
+

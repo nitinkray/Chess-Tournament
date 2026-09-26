@@ -1,6 +1,6 @@
--- Active: 1786379111953@@127.0.0.1@3306@chess
-CREATE DATABASE chess;
+CREATE DATABASE IF NOT EXISTS chess CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
 USE chess;
+
 CREATE TABLE players(
     id INT AUTO_INCREMENT,     
     name VARCHAR(30) NOT NULL,     
@@ -115,24 +115,6 @@ BEGIN
     END IF;
 END//
 DELIMITER ;
-
-DELIMITER // 
-CREATE TRIGGER check_bye_round
-BEFORE INSERT ON byes 
-FOR EACH ROW 
-BEGIN
-    IF EXISTS (
-        SELECT 1 
-        FROM byes 
-        WHERE player_id = NEW.player_id
-        AND round_id = NEW.round_id 
-    ) THEN 
-    SIGNAL SQLSTATE '45000'
-    SET MESSAGE_TEXT =
-    'A player cannot receive more than one bye in the same round';
-    END IF;
-END //
-DELIMITER;
 
 CREATE INDEX idx_standings_tournament_points
 ON standings(tournament_id, points DESC, SB DESC);

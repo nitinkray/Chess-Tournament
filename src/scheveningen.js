@@ -8,7 +8,7 @@ import{
     } 
 from "./tournament.js";
 
-import {t_names} from "./seed.js";
+import {team_names,t_names} from "./seed.js";
 
 const rotate = (playerIds)=>{
     let n = playerIds.length;
@@ -18,11 +18,11 @@ const rotate = (playerIds)=>{
 };
 
 const team_registration = async (connection,t_a,t_b,t_id)=>{
-    const name_a = t_names();
-    let name_b = t_names();
+    const name_a = team_names();
+    let name_b = team_names();
 
     while(name_b === name_a){
-        name_b = t_names();
+        name_b = team_names();
     }
     
     const r_a = await exec(

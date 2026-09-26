@@ -1,0 +1,23 @@
+{
+  "name": "Chess Tournament Simulator",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-24",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "postCreateCommand": "npm install",
+  "postStartCommand": "docker compose up -d --build",
+  "postAttachCommand": "docker compose ps",
+  "containerEnv": {
+    "DB_HOST": "127.0.0.1",
+    "DB_PORT": "3307",
+    "DB_USER": "root",
+    "DB_PASSWORD": "chess",
+    "DB_NAME": "chess"
+  },
+  "forwardPorts": [3307],
+  "portsAttributes": {
+    "3307": { "label": "MySQL (chess database)" }
+  },
+  "hostRequirements": { "cpus": 2, "memory": "8gb" }
+}
+
